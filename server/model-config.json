@@ -8,22 +8,35 @@
     ]
   },
   "User": {
-    "dataSource": "db"
+    "dataSource": "db",
+    "public": false
   },
   "AccessToken": {
-    "dataSource": "db",
+    "dataSource": "MongoDs",
     "public": false
   },
   "ACL": {
-    "dataSource": "db",
+    "dataSource": "MongoDs",
     "public": false
   },
   "RoleMapping": {
-    "dataSource": "db",
+    "dataSource": "MongoDs",
     "public": false
   },
   "Role": {
-    "dataSource": "db",
+    "dataSource": "MongoDs",
     "public": false
+  },
+  "Member": {
+    "dataSource": "MongoDs",
+    "public": true
+  },
+  "TodoList": {
+    "dataSource": "MongoDs",
+    "public": true
+  },
+  "Task": {
+    "dataSource": "MongoDs",
+    "public": true
   }
 }

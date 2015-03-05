@@ -1,0 +1,16 @@
+{
+  "name": "Member",
+  "base": "User",
+  "idInjection": true,
+  "properties": {},
+  "validations": [],
+  "relations": {
+    "todoLists": {
+      "type": "hasMany",
+      "model": "TodoList",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": []
+}
