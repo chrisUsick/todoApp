@@ -10,6 +10,21 @@
   },
   "validations": [],
   "relations": {},
-  "acls": [],
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType":"ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY",
+      "property": "*"
+    },
+    {
+      "accessType": "*",
+      "principalType":"ROLE",
+      "principalId": "$owner",
+      "permission": "ALLOW",
+      "property": "*"
+    }
+  ],
   "methods": []
 }
