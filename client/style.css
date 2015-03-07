@@ -1,0 +1,17 @@
+table {
+	border-collapse: collapse; 
+}
+table, th, td {
+	padding: 0px 10px;
+	border:2px solid grey;
+}
+
+pre {
+	background-color: #eee;
+	display: inline-block;
+	margin: 5px 0px;
+}
+
+td p {
+	margin: 2px 0px;
+}

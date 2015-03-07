@@ -1,0 +1,113 @@
+<html>
+	<head>
+		<title>TodoApp API Home</title>
+		<link rel="stylesheet" type="text/css" href="style.css">
+	</head>
+	<body>
+		<header>
+			<h1>TodoApp API Home</h1>
+			<p> Here are instructions for using the todo app API</p>
+		</header>
+		<section>
+			<h2> Requirements </h2>
+			<p>
+				This API provides the following functionality:
+				<ul>
+					<li>Public can log in or create an account</li>
+					<li>A user can create todo lists</li>
+					<li>A user can add tasks to their todo lists</li>
+				</ul>
+			</p>
+			<div>
+				<span>The API uses access tokens, which can be placed in the <pre>Authentication</pre> header.</span>
+			</div>
+
+			<h2> Routes</h2>
+			<p>
+				There Are a few points to note:
+			</p>
+			<ul>
+				<li>The API route is <pre>/api</pre></li>
+				<li>The update and delete routes can be used for any route. For example to update a user setting use the syntax of update task but on the <pre>/Members/:id</pre> route.</li>
+			</ul>
+			<p>
+				To test the api in action use the <a href="https://chrome.google.com/webstore/detail/postman-rest-client-packa/fhbjgbiflinjbdggehcddcbncdddomop">Postman chrome extension</a>. Import <a href="todoAppPostman.json">this</a> Postman collection to see test all the routes in action. Note, you will have to change the access tokens that are in the file to your own access tokens.
+			</p>
+			<table>
+				<thead>
+					<th>Action</th>
+					<th>Route</th>
+					<th>Authentication</th>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Create Account</td>
+						<td>
+							<pre>POST /Members</pre>
+							<p>Data:</p>
+							<pre>{ "email":String, "password":String}</pre>
+						</td>
+						<td>No</td>
+					</tr>
+					<tr>
+						<td>Login</td>
+						<td>
+							<pre>POST /Members/login</pre>
+							<p>Data:</p>
+							<pre>{"email":String, "password":String}</pre>
+							<p>This route returns an access token. Put the 'id' field of the access token into the <pre>Authentication</pre> header.</p>
+						</td>
+						<td>No</td>
+					</tr>
+					<tr>
+						<td>Create TodoList</td>
+						<td>
+							<pre>POST /Members/:id/todoLists</pre>
+							<!-- <span>Or:</span> -->
+							<pre>POST /TodoLists</pre>
+							<p>Data:</p>
+							<pre>{"title":String}</pre>
+						</td>
+						<td>Yes, if using the <pre>/TodoLists</pre> route it is attached to authenticated user automatically.</td>
+					</tr>
+					<tr>
+						<td>List todoLists</td>
+						<td>
+							<pre>GET /Members/:id/todoLists</pre>
+							<p>Optional URL parameters</p>
+							<pre>?filter={"include":"tasks"}</pre>
+							This will include all the tasks of the todoLists
+						</td>
+						<td>Yes</td>
+					</tr>
+					<tr>
+						<td>add task</td>
+						<td>
+							<pre>POST /TodoLists/:id/tasks</pre>
+							<p>Data:</p>
+							<pre>{"completed":Boolean, "title":String}</pre>
+						</td>
+						<td>Yes. The server will only allow a user to add tasks to todo lists that are theirs.</td>
+					</tr>
+					<tr>
+						<td>Update Task</td>
+						<td>
+							<pre>PUT /TodoLists/:id/tasks/:taskId</pre>
+							<p> Data:</p>
+							<p> Any data from creating a todo task.</p>
+						</td>
+						<td>Yes.</td>
+					</tr>
+					<tr>
+						<td>Delete TodoList</td>
+						<td>
+							<pre>DELETE /TodoLists/:id</pre>
+						</td>
+						<td>Yes.</td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
+
+	</body>
+</html>
